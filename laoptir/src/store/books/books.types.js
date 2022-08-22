@@ -1,0 +1,4 @@
+export const BOOKS_ACTION_TYPES = {
+	SET_BOOKS: "SET_BOOKS",
+	RESET_BOOKS: "RESET_BOOKS",
+};
