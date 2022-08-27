@@ -5,15 +5,26 @@ export const Wrapper = styled.div`
 	text-decoration: none;
 	flex-direction: column;
 	text-align: center;
-	h1 {
+	.large-heading {
+		@media only screen and (max-width: 850px) {
+			font-size: 4.8rem;
+			margin: 1rem 0 5rem;
+		}
 		font-size: 6.4rem;
 		margin: 2rem 0 10rem;
 	}
-	h2 {
+	.big-heading {
+		@media only screen and (max-width: 850px) {
+			font-size: 3.2rem;
+			padding-bottom: 1rem;
+		}
 		font-size: 4.8rem;
 		padding-bottom: 2rem;
 	}
-	h3 {
+	.medium-heading {
+		@media only screen and (max-width: 850px) {
+			font-size: 2.8rem;
+		}
 		font-size: 3.2rem;
 		padding: 1rem 0;
 	}
@@ -23,16 +34,24 @@ export const Wrapper = styled.div`
 		width: fit-content;
 		margin: 2rem auto;
 		padding: 2rem 3rem;
-		p {
+		.dislaimerText {
 			font-size: 2rem;
 		}
 	}
 
 	.quote {
+		@media only screen and (max-width: 850px) {
+			width: 90vw;
+			padding: 3rem;
+		}
 		text-align: start;
 		background-color: #0d0116;
 		padding: 2rem 10rem;
 		width: fit-content;
 		margin: 2rem auto;
+	}
+
+	.characterName {
+		color: #5f387d;
 	}
 `;

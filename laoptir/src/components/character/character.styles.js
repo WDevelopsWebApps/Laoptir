@@ -27,12 +27,19 @@ export const CharacterWrapper = styled.div`
 	}
 
 	a {
+		@media only screen and (max-width: 850px) {
+			font-size: 1.2rem;
+		}
 		font-size: 2rem;
 		text-decoration: none;
 		color: #000000;
 	}
 
 	.characterDescription {
+		@media only screen and (max-width: 850px) {
+			width: 80vw;
+		}
+
 		background-color: #5f387d;
 		text-align: left;
 		width: 50rem;
@@ -41,12 +48,21 @@ export const CharacterWrapper = styled.div`
 		padding: 1rem;
 		border-radius: 8px;
 		border: 0.1rem solid;
+		overflow: auto;
+		white-space: pre-line;
 
 		.title {
+			@media only screen and (max-width: 850px) {
+				font-size: 1.2rem;
+			}
 			font-size: 1.6rem;
 		}
 
 		.color {
+			@media only screen and (max-width: 850px) {
+				font-size: 1.2rem;
+				word-wrap: break-word;
+			}
 			color: #ddcee6;
 			font-size: 1.6rem;
 			padding-left: 1rem;

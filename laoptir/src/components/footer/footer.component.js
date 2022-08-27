@@ -5,12 +5,13 @@ export default class Footer extends React.Component {
 	render() {
 		return (
 			<FooterWrapper>
-				<p>
+				<p className="footerText">
 					Copyrights and trademarks for the books, films, articles, merchandise
 					and other promotional materials are held by their respective owners
 					and my limited use of these materials is done by permission or is
 					allowed under the{" "}
 					<a
+						className="footerLink"
 						href="https://www.law.cornell.edu/uscode/text/17/107"
 						alt="Fair use link"
 					>
@@ -18,6 +19,7 @@ export default class Footer extends React.Component {
 					</a>{" "}
 					clause of the{" "}
 					<a
+						className="footerLink"
 						href="https://www.law.cornell.edu/uscode/text/17"
 						alt="Copyright Act"
 					>

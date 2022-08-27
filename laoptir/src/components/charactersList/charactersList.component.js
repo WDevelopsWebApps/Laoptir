@@ -85,7 +85,9 @@ class CharactersList extends React.Component {
 						<div className="characters-list">
 							{this.props.characters.currentCharacters.map(
 								(character, index) => (
-									<p key={index}>{character}</p>
+									<p className="characterText" key={index}>
+										{character}
+									</p>
 								)
 							)}
 						</div>

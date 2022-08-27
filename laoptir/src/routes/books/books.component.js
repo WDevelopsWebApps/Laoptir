@@ -56,9 +56,9 @@ class Books extends React.Component {
 						<span className="big-heading-api">i</span>r
 					</h1>
 					<div className="books">
-						<p>Lord of the Rings includes 3 books: </p>
+						<p className="bookNames">Lord of the Rings includes 3 books: </p>
 						{this.props.books.thrilogy[0] ? (
-							<p>{`${this.props.books.thrilogy[0].name}, ${this.props.books.thrilogy[1].name} and ${this.props.books.thrilogy[2].name}`}</p>
+							<p className="bookNames">{`${this.props.books.thrilogy[0].name}, ${this.props.books.thrilogy[1].name} and ${this.props.books.thrilogy[2].name}`}</p>
 						) : (
 							<Spinner />
 						)}

@@ -43,48 +43,50 @@ class Character extends React.Component {
 						: ""}
 				</datalist>
 				{this.props.characters.character.length > 0 ? (
-					<table className="characterDescription">
-						<tbody>
-							{Object.keys(this.props.characters.character[0])
-								.filter(
-									(key) =>
-										!key.includes("_id") &&
-										this.props.characters.character[0][key].length > 0 &&
-										this.props.characters.character[0][key] !== "NaN"
-								)
-								.map((key, index) => {
-									if (key.includes("wiki")) {
-										return (
-											<tr key={index}>
-												<td key={index + 1} className="title">
-													Wiki{" "}
-												</td>
-												<td key={index + 2} className="color">
-													<a
-														key={index + 3}
-														href={this.props.characters.character[0][key]}
-														alt={"Wiki Url"}
-													>
+					<div className="characterDescription">
+						<table>
+							<tbody>
+								{Object.keys(this.props.characters.character[0])
+									.filter(
+										(key) =>
+											!key.includes("_id") &&
+											this.props.characters.character[0][key].length > 0 &&
+											this.props.characters.character[0][key] !== "NaN"
+									)
+									.map((key, index) => {
+										if (key.includes("wiki")) {
+											return (
+												<tr key={index}>
+													<td key={index + 1} className="title">
+														Wiki{" "}
+													</td>
+													<td key={index + 2} className="color">
+														<a
+															key={index + 3}
+															href={this.props.characters.character[0][key]}
+															alt={"Wiki Url"}
+														>
+															{this.props.characters.character[0][key]}
+														</a>
+													</td>
+												</tr>
+											);
+										} else {
+											return (
+												<tr key={index + 11}>
+													<td className="title" key={index + 10}>
+														{this.capitalize(key)}
+													</td>
+													<td className="color" key={index + 7}>
 														{this.props.characters.character[0][key]}
-													</a>
-												</td>
-											</tr>
-										);
-									} else {
-										return (
-											<tr key={index + 11}>
-												<td className="title" key={index + 10}>
-													{this.capitalize(key)}
-												</td>
-												<td className="color" key={index + 7}>
-													{this.props.characters.character[0][key]}
-												</td>
-											</tr>
-										);
-									}
-								})}
-						</tbody>
-					</table>
+													</td>
+												</tr>
+											);
+										}
+									})}
+							</tbody>
+						</table>
+					</div>
 				) : (
 					""
 				)}

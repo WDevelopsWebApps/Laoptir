@@ -66,7 +66,11 @@ class Card extends React.Component {
 									.map((key, i) => {
 										let keyName = this.regularText(key);
 										if (key === "name") {
-											return <h3 key={movie._id + i + 5}>{movie[key]}</h3>;
+											return (
+												<h3 className="medium-heading" key={movie._id + i + 5}>
+													{movie[key]}
+												</h3>
+											);
 										}
 										if (
 											this.props.index > 4 &&

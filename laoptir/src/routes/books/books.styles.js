@@ -12,6 +12,10 @@ export const BooksWrapper = styled.div`
 		background-color: #2a0944;
 		width: 40vw;
 		margin: 0 auto 10rem;
+		@media only screen and (max-width: 850px) {
+			width: 80vw;
+			margin: 0 auto 5rem;
+		}
 
 		.large-heading {
 			margin: 0;
@@ -19,6 +23,19 @@ export const BooksWrapper = styled.div`
 
 		.books {
 			margin: 5rem 0 3rem;
+			overflow: hidden;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+			overflow: auto;
+			width: 100%;
+		}
+
+		.bookNames {
+			@media only screen and (max-width: 850px) {
+				font-size: 1.2rem;
+				line-height: 1.6;
+			}
+			word-wrap: break-word;
 		}
 
 		.medium-heading {
@@ -35,6 +52,10 @@ export const BooksWrapper = styled.div`
 		width: 40vw;
 		margin: 10rem auto 0;
 		border-radius: 8px;
+		@media only screen and (max-width: 850px) {
+			width: 80vw;
+			margin: 0 auto;
+		}
 	}
 	.chapter {
 		line-height: 3rem;

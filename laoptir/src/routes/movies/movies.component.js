@@ -52,7 +52,7 @@ class Movies extends React.Component {
 				{/* Movies list includes 8 items. Cards from index 2 - 4 include the Hobbit series. */}
 				<Card index={2} index1={5} />
 				<div className="disclaimer">
-					<p>
+					<p className="disclaimerText">
 						Sadly as of right now, the Hobbit series doesn't include movie
 						quotes. Currently, you are able only to generate quotes for the LoTR
 						series.
@@ -71,7 +71,8 @@ class Movies extends React.Component {
 				<div className="quote">
 					{this.props.movies.quote ? (
 						<p>
-							{`${this.findCharacter()}: "${this.props.movies.quote.dialog}"`}
+							<span className="characterName">{this.findCharacter()}</span>: "
+							{this.props.movies.quote.dialog}""
 						</p>
 					) : (
 						<Spinner />

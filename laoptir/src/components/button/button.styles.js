@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
+	@media only screen and (max-width: 850px) {
+		width: 15rem;
+		font-size: 1.2rem;
+		height: 3rem;
+	}
 	margin: 1rem;
 	border: none;
 	border-radius: 10px;

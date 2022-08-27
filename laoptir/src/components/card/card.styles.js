@@ -6,10 +6,17 @@ export const ListOfMovies = styled.li`
 `;
 
 export const MovieSeriesDiv = styled.div`
+	@media only screen and (max-width: 850px) {
+		flex-direction: column;
+	}
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	div {
+		@media only screen and (max-width: 850px) {
+			width: 90vw;
+			margin: 1rem;
+		}
 		width: 50rem;
 		margin: 3rem 3rem;
 		overflow: hidden;
