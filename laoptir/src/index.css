@@ -21,6 +21,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-color: #2a0944;
+	/* background-color: #949197; */
 	color: aliceblue;
 }
 
@@ -38,12 +39,22 @@ p {
 	font-size: 1.6rem;
 }
 
-.big-heading {
+.large-heading {
 	font-size: 6.4rem;
+	margin: 2rem 0 10rem;
 }
 
 .big-heading-api {
 	color: #757079;
+}
+
+.big-heading {
+	font-size: 4.8rem;
+	padding-bottom: 2rem;
+}
+.medium-heading {
+	font-size: 3.2rem;
+	padding: 1rem 0;
 }
 
 .small-heading {

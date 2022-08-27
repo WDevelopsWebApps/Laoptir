@@ -1,56 +1,95 @@
 import React from "react";
-import { setBooks } from "../../store/books/books.action";
+import {
+	setBooks,
+	setChapters,
+	setChapter,
+} from "../../store/books/books.action";
 import { connect } from "react-redux/";
-import { selectBooks } from "../../store/books/books.selector";
-import { Character } from "../character/character.component";
-import { Link } from "react-router-dom";
-
+import { DarkButton } from "../../components/button/button.styles";
+import { BooksWrapper } from "./books.styles";
+import Spinner from "../../components/spinner/spinner.component";
 class Books extends React.Component {
-	// constructor(props) {
-	// 	super(props);
-	// 	// this.updateBooks = this.updateBooks.bind(this);
-	// }
+	//api
 	url = "https://the-one-api.dev/v2";
+
+	updateChapters = async (id) => {
+		const data = await fetch("api/book/" + id + "/chapter");
+		const toJson = await data.json();
+		const { docs } = toJson;
+		const value = docs.map((chapter) => chapter.chapterName);
+		await this.props.setChapters({ [id]: value });
+	};
 
 	updateBooks = async (url) => {
 		const data = await fetch(url + "/book");
 		const toJson = await data.json();
 		const { docs } = toJson;
-		const value = docs.map((item) => item.name);
-		this.props.setBooks(value);
+		const value = docs.map((item) => item);
+		await this.props.setBooks(value);
+		this.props.books.thrilogy.map((thrilogy) =>
+			this.updateChapters(thrilogy._id)
+		);
 	};
 
-	fetchBackend = async () => {
-		const data = await fetch("/api/movie");
-		const toJson = await data.json();
-		console.log(toJson);
+	//set the display chapters after the button has been pressed
+	displayChapters = (id) => {
+		this.props.setChapter(
+			this.props.books.chapters[id].map((chapter, i) => {
+				return `${i + 1}: ${chapter}`;
+			})
+		);
 	};
 
 	componentDidMount() {
-		if (this.props.books.thrilogy.length <= 0) {
+		if (this.props.books.thrilogy.length <= 1) {
 			this.updateBooks(this.url);
 		}
-		this.fetchBackend();
 	}
 
 	render() {
 		return (
-			<div>
-				<h1 className="big-heading">
-					L<span className="big-heading-api">a</span>o
-					<span className="big-heading-api">p</span>t
-					<span className="big-heading-api">i</span>r
-				</h1>
-				<Link to={"/character"}>Character</Link>
-				<h3 className="small-heading">a LoTR fan page</h3>
-				<img
-					className="books"
-					src={require("../../assets/books.jpg")}
-					alt="books"
-				></img>
-				<p>Lord of the Rings includes 3 books: </p>
-				<p>{`${this.props.books.thrilogy[0]}, ${this.props.books.thrilogy[1]} and ${this.props.books.thrilogy[2]}`}</p>
-			</div>
+			<BooksWrapper>
+				<div className="header">
+					<h1 className="large-heading">
+						L<span className="big-heading-api">a</span>o
+						<span className="big-heading-api">p</span>t
+						<span className="big-heading-api">i</span>r
+					</h1>
+					<div className="books">
+						<p>Lord of the Rings includes 3 books: </p>
+						{this.props.books.thrilogy[0] ? (
+							<p>{`${this.props.books.thrilogy[0].name}, ${this.props.books.thrilogy[1].name} and ${this.props.books.thrilogy[2].name}`}</p>
+						) : (
+							<Spinner />
+						)}
+					</div>
+					<h4 className="small-heading">Get Chapters for </h4>
+					<DarkButton
+						onClick={() => this.displayChapters("5cf5805fb53e011a64671582")}
+					>
+						Fellowship of the Ring
+					</DarkButton>
+					<DarkButton
+						onClick={() => this.displayChapters("5cf58077b53e011a64671583")}
+					>
+						Two Towers
+					</DarkButton>
+					<DarkButton
+						onClick={() => this.displayChapters("5cf58080b53e011a64671584")}
+					>
+						Return of the King
+					</DarkButton>
+				</div>
+				<div className="chapters">
+					{this.props.books.chapter !== ""
+						? this.props.books.chapter.map((chapter, i) => (
+								<p className={"chapter"} key={i}>
+									{chapter}
+								</p>
+						  ))
+						: ""}
+				</div>
+			</BooksWrapper>
 		);
 	}
 }
@@ -63,6 +102,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
 	setBooks,
+	setChapters,
+	setChapter,
 };
 
 const connectToStore = connect(mapStateToProps, mapDispatchToProps);

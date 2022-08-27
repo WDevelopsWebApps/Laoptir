@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import { booksReducer } from "./books/books.reducer";
+import { BooksReducer } from "./books/books.reducer";
+import { CharactersReducer } from "./characters/characters.reducer";
+import { MoviesReducer } from "./movies/movies.reducer";
 
 export const rootReducer = combineReducers({
-	books: booksReducer,
+	books: BooksReducer,
+	movies: MoviesReducer,
+	characters: CharactersReducer,
 });

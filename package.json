@@ -3,8 +3,9 @@
 	"version": "1.0.0",
 	"main": "app.js",
 	"scripts": {
-		"start": "node app.js",
-		"build": "cd laoptir && npm install && npm run build"
+		"start": "npx nodemon app.js",
+		"build": "cd laoptir && npm install && npm run build",
+		"buildDev": "cd laoptir && npm run build && cd .. && npm start"
 	},
 	"author": "",
 	"license": "ISC",
@@ -15,6 +16,9 @@
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.19"
+	},
+	"engines": {
+		"node": "16.15.0"
 	},
 	"description": ""
 }
